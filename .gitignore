@@ -1,0 +1,6 @@
+react-app/node_modules
+server-api/node_modules
+
+react-app/.idea
+server-api/.idea
+

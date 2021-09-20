@@ -1,0 +1,35 @@
+@import "styles/colors";
+
+.select {
+  appearance: none;
+  background: #2F2B42;
+  border: 0;
+  height: 40px;
+  border-radius: 10px;
+  transition: all 0.30s ease-in-out;
+  outline: 0;
+  color: $high-emphasis;
+  padding: 0 10px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 1px solid $high-emphasis;
+    border-radius: 50px;
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px #8569FF;
+  }
+}

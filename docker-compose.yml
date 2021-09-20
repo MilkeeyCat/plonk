@@ -1,17 +1,21 @@
 version: "3"
 services:
-#  react-app:
-#    image: react-app
-#    stdin_open: true
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - mern-app
+  react-app:
+    image: react-app
+    stdin_open: true
+    volumes:
+      - "D:/plonk/react-app:/app/frontend"
+    ports:
+      - "80:3000"
+    networks:
+      - mern-app
   server-api:
     image: server-api
     restart: always
+    volumes:
+    - "D:/plonk/server-api:/app/backend"
     ports:
-      - "3000:3000"
+      - "4000:4000"
     networks:
       - mern-app
     depends_on:

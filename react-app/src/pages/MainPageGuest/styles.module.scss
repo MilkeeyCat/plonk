@@ -1,0 +1,82 @@
+@import "styles/colors";
+
+.hidden {
+  display: none !important;
+}
+
+.form {
+  max-width: 490px;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__column {
+    max-width: 225px;
+    width: 100%;
+
+    & > :not(:first-child) {
+      margin-top: 25px;
+    }
+  }
+
+  &__submit-btn {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.register-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  &__column > :not(:first-child) {
+    margin-top: 25px;
+  }
+
+  &__column {
+    max-width: 225px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.block-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: $high-emphasis;
+  margin-top: 120px;
+}
+
+.reasons {
+  display: grid;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 180px);
+  //align-items: center;
+  justify-content: center;
+
+  &__item {
+    border-radius: 20px;
+    padding: 15px;
+    max-width: 180px;
+    background: $theme-color;
+    color: $high-emphasis;
+  }
+
+  &__text {
+    margin-top: 20px;
+  }
+}

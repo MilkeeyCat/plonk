@@ -1,0 +1,20 @@
+@import "styles/colors";
+
+.header {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  color: $high-emphasis;
+  font-size: 25px;
+
+  span {
+    color: $theme-color;
+  }
+}
+
+.buttons :last-child {
+  margin-left: 25px;
+}

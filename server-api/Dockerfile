@@ -1,13 +1,13 @@
 FROM node
 
-WORKDIR /usr/src/app
+WORKDIR /app/backend
 
-COPY ./package.json ./
+COPY package.json /app/backend
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 4000
 
-CMD [ "node", "app.js" ]
+CMD [ "npm", "run", "serve" ]

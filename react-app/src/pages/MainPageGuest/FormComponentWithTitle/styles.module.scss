@@ -1,0 +1,20 @@
+@import "styles/colors";
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+
+  //input {
+    max-width: 225px;
+    margin-top: 10px;
+  //}
+
+  &__item {
+    margin-top: 10px;
+  }
+
+  &__title {
+    color: $high-emphasis;
+    font-weight: bold;
+  }
+}

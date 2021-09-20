@@ -1,0 +1,20 @@
+@import "styles/colors";
+
+.input {
+  background: #2F2B42;
+  border: 0;
+  height: 40px;
+  border-radius: 10px;
+  transition: all 0.30s ease-in-out;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  &:focus {
+    //filter: drop-shadow();
+    border: 1px solid $theme-color;
+    box-shadow: 0 0 5px $theme-color;
+  }
+
+  color: $high-emphasis
+
+}

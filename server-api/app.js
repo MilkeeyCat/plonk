@@ -10,25 +10,20 @@ const __dirname = path.resolve()
 const app = express()
 
 app.listen(4000, async () => {
-    await mongoose.connect("mongodb://root:example@localhost/posts?authSource=admin").catch(e => console.log(e))
+    await mongoose.connect("mongodb://localhost/plonk").catch(e => console.log(e))
 })
 
 app.set("view engine", "ejs")
 app.set("views", path.resolve(__dirname, "views"))
 
 app.use((req, res, next) => {
-    // console.log(req.headers.origin)
+    // res.header("Access-Control-Allow-Headers", "POST, PUT, GET, PATCH, OPTIONS")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Origin", req.headers.origin)
     res.header("Access-Control-Allow-Credentials", "true")
-    // res.header("Access-Control-Allow-Credentials", "true")
     next()
 })
 
 app.use(express.json())
 app.use("/public", express.static(path.resolve(__dirname, "static")))
 app.use(usersRouter)
-
-
-app.post("/dungeon-master", authMiddleware, (req, res) => {
-    res.status(200).send("Welcome 🙌 ")
-})

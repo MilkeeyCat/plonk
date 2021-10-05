@@ -6,39 +6,28 @@ class UsersService {
     async register(userData) {
         const encryptedPassword = await bcrypt.hash(userData.password, 10)
 
-        const user = await User.create({
+        return await User.create({
             ...userData,
+            username: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) + `__${userData.first_name}_${userData.last_name}`,
             password: encryptedPassword,
         })
-
-        const token = jwt.sign(
-            {user_id: user._id, email: userData.email},
-            process.env.TOKEN_KEY,
-            {
-                expiresIn: "2h",
-            }
-        )
-        user.token = token
-
-        return user
     }
 
     async login(userData) {
-        const user = await User.findOne({email: userData.email})
+        let user = await User.findOne({email: userData.email}).lean()
 
         if (user && (await bcrypt.compare(userData.password, user.password))) {
             const token = jwt.sign(
-                {user_id: user._id, email},
+                {user_id: user._id, email: user.email},
                 process.env.TOKEN_KEY,
                 {
                     expiresIn: "2h",
                 }
             )
 
-            user.token = token
+            return {user, token}
         }
 
-        return user
     }
 }
 

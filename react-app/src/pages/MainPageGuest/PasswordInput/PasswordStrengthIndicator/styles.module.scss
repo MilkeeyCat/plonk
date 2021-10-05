@@ -1,0 +1,76 @@
+@import "styles/colors";
+
+.hidden {
+  display: none;
+}
+
+.indicator {
+  margin-top: 5px;
+
+  &__container {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    width: 32%;
+    height: 2px;
+    border-radius: 10px;
+    background: #c4c4c4;
+    position: relative;
+
+    &:after {
+    transition: all .5s;
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 0;
+      height: 2px;
+      //background: purple;
+      border-radius: 10px;
+    }
+
+    &.weak:after {
+      width: 100%;
+      background: #FF5050;
+    }
+
+    &.medium:after {
+      width: 100%;
+      background: #9EB85B;
+    }
+
+    &.strength:after {
+      width: 100%;
+      background: #4CB144;
+    }
+
+    //&.weak:after {animation: move 5s normal;background: red;}
+    //&.medium:after {animation: move 5s normal;background: green;}
+    //&.strength:after {animation: move 5s normal;background: blue;}
+    //
+    //&.weak-reversed:after {animation: move 5s reverse;background: red;}
+    //&.medium-reversed:after {animation: move 5s reverse;background: green;}
+    //&.strength-reversed:after {animation: move 5s reverse;background: blue;}
+  }
+
+  &__text {
+    color: $high-emphasis;
+    text-align: right;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+}
+
+@keyframes move {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

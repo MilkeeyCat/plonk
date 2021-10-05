@@ -4,45 +4,62 @@ import UsersService from "../services/users.service.js"
 
 class UsersController {
     async register(req, res) {
-        // try {
-        //     const {first_name, last_name, email, password} = req.body
-        //
-        //     if (!(email && password && first_name && last_name)) {
-        //         res.status(400).send("All input is required")
-        //     }
-        //
-        //     const oldUser = await User.findOne({email})
-        //
-        //     if (oldUser) {
-        //         return res.status(409).json({error: "User Already Exist. Please Login"})
-        //     }
-        //
-        //     const user = UsersService.register({first_name, last_name, email, password})
-        //
-        //     res.status(201).json(user)
-        // } catch (err) {
-        //     console.log(err)
-        // }
-        res.json("LOL")
+        try {
+            const {first_name, last_name, email, password, gender} = req.body
+            const errors = {}
+
+            const oldUser = await User.findOne({email})
+
+            if (oldUser) {
+                errors.email = "User Already Exist. Please Login"
+            }
+
+            if (!(email && password && first_name && last_name && gender)) {
+                const data = {first_name, last_name, email, password, gender}
+
+                Object.keys(data).forEach(key => {
+                    if (data[key] === "") errors[key] = "Field is required"
+                })
+
+            }
+
+            if (Object.keys(errors).length) {
+                return res.status(400).json(errors)
+            }
+
+            const user = await UsersService.register({first_name, last_name, email, password, gender})
+
+            res.status(201).json(user)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     async login(req, res) {
         try {
             const {email, password} = req.body
+            const errors = {}
+
+            const {user, token} = await UsersService.login({email, password})
 
             if (!(email && password)) {
-                res.status(400).send({error: "All input is required"})
+                errors.email = "Email or password is invalid"
+                errors.password = "Email or password is invalid"
             }
-            const user = await User.findOne({email})
-
-            if (!user && !(await bcrypt.compare(password, user.password))) {
-                res.status(400).json({error: "Invalid Credentials"})
+            if (!user || !(await bcrypt.compare(password, user?.password))) {
+                errors.email = "Email or password is invalid"
+                errors.password = "Email or password is invalid"
             }
 
-            const authedUser = UsersService.login({email, password})
+            if (Object.keys(errors).length) {
+                return res.status(400).json(errors)
+            }
 
-            res.json(authedUser)
+            delete user.password
+            delete user.__v
 
+            res.cookie('token', token, { httpOnly: true });
+            return res.json({user})
         } catch (err) {
             console.log(err)
         }

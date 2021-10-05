@@ -1,7 +1,9 @@
-import {authReducer} from "./auth"
 import {headerReducer} from "./header"
+import {userReducer} from "./user"
+import {appReducer} from "./app"
 
 export default {
-    authReducer,
-    headerReducer
+    headerReducer,
+    userReducer,
+    appReducer
 }

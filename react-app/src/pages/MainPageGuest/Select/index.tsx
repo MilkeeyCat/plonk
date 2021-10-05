@@ -1,12 +1,13 @@
 import styles from "./styles.module.scss"
 
 interface IProps {
-    className?: string
+    className?: string,
+    defaultValue: string
 }
 
-export const Select: React.FC<IProps> = ({className, children}) => {
+export const Select: React.FC<IProps> = ({className, defaultValue, children}) => {
     return (
-        <select className={`${styles.select} ${className}`}>
+        <select defaultValue={defaultValue} className={`${styles.select} ${className}`}>
             {children}
         </select>
     )

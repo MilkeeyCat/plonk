@@ -9,3 +9,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  overflow-y: overlay;
+}
+
+body.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+::selection {
+  background-color: #8569FF;
+}

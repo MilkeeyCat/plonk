@@ -8,8 +8,6 @@ interface IProps {
 }
 
 export const Button:React.FC<IProps | {[key:string]: any}> = ({filled, customStyles, className, ...props}) => {
-    console.log(className)
-
     return(
         <button {...props} style={customStyles ?? {}} className={classnames(className, styles.button, {[styles["filled"]]: filled})}>{props.children}</button>
     )

@@ -1,0 +1,55 @@
+@import "styles/colors";
+
+.pop-up {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: $high-emphasis;
+  z-index: 999;
+  visibility: hidden;
+  transition: all .5s;
+  opacity: 0;
+
+  &_visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(24, 26, 37, .8);
+  }
+
+  &__inner {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $background-color;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all .5s;
+  }
+
+  &_visible .pop-up__inner {
+    top: 200px;
+  }
+
+  &__close-btn {
+    align-self: flex-end;
+    margin-right: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  &__text {
+    padding: 45px 130px;
+  }
+}

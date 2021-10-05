@@ -4,17 +4,36 @@
   display: none !important;
 }
 
+.forms-container {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  position: relative;
+  min-height: 300px;
+}
+
 .form {
   max-width: 490px;
+  width: 100%;
   margin-top: 70px;
   margin-left: auto;
   margin-right: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 1s;
+  opacity: 1;
 }
 
 .login-form {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  &_invisible {
+    transform: translateX(50%);
+    opacity: 0;
+  }
 
   &__column {
     max-width: 225px;
@@ -37,6 +56,11 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+
+  &_invisible {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
 
   &__column > :not(:first-child) {
     margin-top: 25px;
@@ -65,7 +89,6 @@
   margin-right: auto;
   grid-gap: 30px;
   grid-template-columns: repeat(3, 180px);
-  //align-items: center;
   justify-content: center;
 
   &__item {
@@ -78,5 +101,18 @@
 
   &__text {
     margin-top: 20px;
+  }
+}
+
+.registration-succeed {
+  text-align: center;
+
+  h2 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  h2, .go-to-login {
+    margin-top: 25px;
   }
 }

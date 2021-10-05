@@ -12,8 +12,14 @@ export const Header = () => {
         <header className={styles.header}>
             <div className={styles.logo}>Plonk<span>.</span></div>
             <div className={styles.buttons}>
-                <Button filled={currentButton === "register"} onClick={() => dispatch(HeaderActionCreators.setForm("register"))}>Register</Button>
-                <Button filled={currentButton === "login"} onClick={() => dispatch(HeaderActionCreators.setForm("login"))}>Login</Button>
+                <Button filled={currentButton === "register"} onClick={() => {
+                    dispatch(HeaderActionCreators.setForm("register"))
+                    dispatch(HeaderActionCreators.setIsFormChanged(true))
+                }}>Register</Button>
+                <Button filled={currentButton === "login"} onClick={() => {
+                    dispatch(HeaderActionCreators.setForm("login"))
+                    dispatch(HeaderActionCreators.setIsFormChanged(true))
+                }}>Login</Button>
             </div>
         </header>
     )

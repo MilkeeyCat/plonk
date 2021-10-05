@@ -1,5 +1,5 @@
 export const MainPageAuthtorized: React.FC = () => {
     return <>
-        ADASGGD
+        <div>LOL</div>
         </>;
 }

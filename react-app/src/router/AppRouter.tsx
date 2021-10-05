@@ -5,11 +5,11 @@ import {useDispatch} from "react-redux"
 
 export const AppRouter = () => {
     const dispatch = useDispatch()
-    let {isAuth} = useTypedSelector(state => state.authReducer)
+    let {isAuthed} = useTypedSelector(state => state.userReducer)
     const id = localStorage.getItem("id")
 
     return (
-        isAuth ?
+        isAuthed ?
             <Switch>
                 {privateRoute.map(route => <Route key={route.path} path={route.path} exact={route.exact}
                                                   component={route.component}/>)}

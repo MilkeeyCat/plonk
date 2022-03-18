@@ -12,8 +12,8 @@ export const authAPI = {
         return instance.post<Login>("login", data)
             .then(res => res.data)
     },
-    me() {
-        return instance.post<Login>("me")
+    getData() {
+        return instance.post<Login>("get-user-data")
             .then(res => res.data)
     }
 }

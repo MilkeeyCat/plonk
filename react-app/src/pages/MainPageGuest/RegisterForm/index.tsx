@@ -18,6 +18,7 @@ import {PopUp} from "../../../common/components/PopUp"
 import checkIcon from "../../../images/check-mark.svg"
 import {RootState} from "../../../store/state"
 import {registerUser} from "../../../store/thunk/auth"
+import {HeaderActionCreators} from "../../../store/actionCreators/header"
 
 interface IProps {
     visible: boolean
@@ -38,11 +39,14 @@ export const RegisterForm: React.FC<IProps> = React.memo(({visible, ...props}) =
 
     return (
         <>
-            <PopUp className={styles["registration-succeed"]} visible={isRegistrationSuccessful}
+            <PopUp className={styles["registration-succeed"]} visible={isRegistrationSuccessful} styles={{padding: "45px 130px"}}
                    onClose={() => setIsRegistrationSuccessful(false)}>
                 <img src={checkIcon} alt="check icon"/>
                 <h2>Your account<br/> was created successful.</h2>
-                <Button filled className={styles["go-to-login"]}>Login</Button>
+                <Button filled className={styles["go-to-login"]} onClick={() => {
+                    setIsRegistrationSuccessful(false)
+                    dispatch(HeaderActionCreators.setForm("login"))
+                }}>Login</Button>
             </PopUp>
             <Formik initialValues={{
                 first_name: "",

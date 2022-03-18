@@ -1,0 +1,25 @@
+@import "styles/colors";
+
+.notification {
+  position: relative;
+  cursor: pointer;
+
+  &__icon {
+    color: $high-emphasis
+  }
+
+  &__count {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -3px;
+    top: -5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    border-radius: 50%;
+    background: $theme-color;
+    color: $high-emphasis;
+  }
+}

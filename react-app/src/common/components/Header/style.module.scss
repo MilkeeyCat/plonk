@@ -1,20 +1,36 @@
 @import "styles/colors";
 
 .header {
+  width: 100%;
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
-}
+  align-items: center;
 
-.logo {
-  color: $high-emphasis;
-  font-size: 25px;
+  &__search {
+    margin-left: 120px;
+  }
 
-  span {
-    color: $theme-color;
+  &__right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    &-avatar {
+      margin-left: 30px;
+    }
+
+    &-name {
+      color: $high-emphasis;
+      align-self: center;
+      margin-left: 20px;
+    }
   }
 }
 
-.buttons :last-child {
-  margin-left: 25px;
+.buttons {
+  margin-left: auto;
+
+  & :last-child {
+    margin-left: 25px;
+  }
 }

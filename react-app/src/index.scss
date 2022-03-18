@@ -1,0 +1,64 @@
+@import "styles/colors";
+
+body, html, * {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  color: $high-emphasis;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+html {
+  overflow-y: overlay;
+}
+
+body.no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+::selection {
+  background-color: #8569FF;
+}
+
+input {
+  transition: all 0.30s ease-in-out;
+  outline: 0;
+  border: 1px solid rgba(0, 0, 0, 0);
+
+  &:focus {
+    border: 1px solid $theme-color;
+    box-shadow: 0 0 5px $theme-color;
+  }
+}
+
+textarea {
+  transition: all 0.30s ease-in-out;
+  outline: 0;
+  border: 2px solid rgba(0, 0, 0, 0);
+
+  &:focus {
+    border: 2px solid $theme-color;
+    box-shadow: 0 0 5px $theme-color;
+  }
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+video {
+  max-width: 100%;
+  //max-height: 100%;
+  object-fit: cover;
+}

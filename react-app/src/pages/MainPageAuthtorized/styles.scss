@@ -1,0 +1,133 @@
+@import "styles/colors";
+
+.create-post-form {
+  display: flex;
+
+  background: $lighter;
+  padding: 20px;
+  border-radius: 10px;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: $tertiary;
+    text-indent: 15px;
+    color: $high-emphasis;
+
+    &::placeholder {
+      color: $medium-emphasis;
+    }
+
+    &-container {
+      width: 100%;
+      margin-left: 20px;
+      position: relative;
+    }
+  }
+
+  &__media-content {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    & svg {
+      cursor: pointer;
+    }
+
+    & :not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.new-post {
+  &__textarea {
+    width: 100%;
+    height: 110px;
+    background: $lighter;
+    border: 2px solid $tertiary;
+    border-radius: 10px;
+    text-indent: 10px;
+    padding-top: 10px;
+    outline: 0;
+    resize: none;
+    color: $high-emphasis;
+
+    &_hidden {
+      display: none;
+    }
+
+    &::placeholder {
+      color: $medium-emphasis;
+    }
+  }
+
+  &__voice-recorder {
+    border: 2px solid $tertiary;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+
+    &-btn {
+      background-color: $tertiary;
+      border: 0;
+      color: $high-emphasis;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    &-delete {
+      background-color: #E16A6E;
+    }
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__image-video {
+    //margin: 10px;
+
+    &_hidden {
+      display: none !important;
+    }
+  }
+
+  &__document {
+    //margin: 10px;
+
+    &_hidden {
+      display: none !important;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    margin-top: 15px;
+
+    button {
+      padding: 10px;
+      border: 1px solid $theme-color;
+      background: rgba(0, 0, 0, 0);
+      border-radius: 10px;
+      color: $high-emphasis;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    & :not(:first-child) {
+      margin-left: 15px;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}

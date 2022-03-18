@@ -8,7 +8,7 @@ export enum UserActionEnum {
 
 export interface IUserState {
     user: User<null>
-    isAuthed: boolean
+    isAuthed: boolean | null
 }
 
 export interface setData {

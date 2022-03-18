@@ -1,0 +1,29 @@
+@import "styles/colors";
+
+.nav {
+  display: flex;
+  margin-left: 100px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $high-emphasis;
+    padding: 10px;
+    background: $lighter;
+    border-radius: 10px;
+    transition: all .5s;
+
+    &:not(&_active):hover {
+      background: #443E62;
+    }
+
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    &_active {
+      background: $theme-color;
+    }
+  }
+}

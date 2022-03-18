@@ -1,0 +1,22 @@
+@import "styles/colors";
+
+.waveform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+
+  &__play-btn {
+    padding: 10px;
+    border-radius: 10px;
+    background: $tertiary;
+  }
+
+  &__inner {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+  }
+}

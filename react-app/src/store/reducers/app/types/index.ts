@@ -6,7 +6,7 @@ export interface IAppState {
     isInitialized: boolean
 }
 
-type setIsInitialized = {
+export type setIsInitialized = {
     type: AppActionEnum.SET_IS_INITIALIZED,
     payload: boolean
 }

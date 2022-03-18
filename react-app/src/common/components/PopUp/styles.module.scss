@@ -27,15 +27,30 @@
   }
 
   &__inner {
+    max-width: fit-content;
+    width: 100%;
     position: absolute;
     top: -100%;
     left: 50%;
     transform: translateX(-50%);
-    background: $background-color;
+    background: $lighter;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     transition: all .5s;
+  }
+
+  &__header {
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  &__title {
+    position: absolute;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
   }
 
   &_visible .pop-up__inner {
@@ -43,13 +58,11 @@
   }
 
   &__close-btn {
-    align-self: flex-end;
     margin-right: 15px;
-    margin-top: 10px;
+    margin-left: auto;
     cursor: pointer;
-  }
-
-  &__text {
-    padding: 45px 130px;
+    background: $tertiary;
+    padding: 5px;
+    border-radius: 10px;
   }
 }

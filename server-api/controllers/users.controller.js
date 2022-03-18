@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs"
-import {User} from "../models/user.model.js"
 import UsersService from "../services/users.service.js"
+import {User} from "../models/User.js"
 
 class UsersController {
     async register(req, res) {
@@ -9,6 +9,7 @@ class UsersController {
             const errors = {}
 
             const oldUser = await User.findOne({email})
+            console.log(oldUser, ":DD:D:")
 
             if (oldUser) {
                 errors.email = "User Already Exist. Please Login"
@@ -55,13 +56,20 @@ class UsersController {
                 return res.status(400).json(errors)
             }
 
-            delete user.password
-            delete user.__v
-
-            res.cookie('token', token, { httpOnly: true });
+            res.cookie("token", token, {httpOnly: true})
             return res.json({user})
         } catch (err) {
             console.log(err)
+        }
+    }
+
+    async getUserData(req, res) {
+        try {
+            const user = await User.findOne({email: req.user.email, id: req.user.id})
+
+            return res.json({user})
+        } catch (e) {
+            console.log(e)
         }
     }
 }

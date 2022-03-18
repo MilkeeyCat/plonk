@@ -1,29 +1,31 @@
-import styles from "./styles.module.scss"
+import pStyles from "./styles.module.scss"
 import React from "react"
-import {library} from "@fortawesome/fontawesome-svg-core"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faTimes} from "@fortawesome/free-solid-svg-icons"
+import {FaTimes} from "react-icons/fa"
 import classnames from "classnames"
-
-library.add(faTimes)
 
 interface IProps {
     className?: string,
     visible: boolean,
-    onClose: () => void
+    onClose: () => void,
+    title?: string,
+    width?: string,
+    styles?: React.CSSProperties
 }
 
-export const PopUp: React.FC<IProps> = ({visible, onClose, children, className}) => {
+export const PopUp: React.FC<IProps> = ({visible, onClose, children, title, width, styles, className}) => {
     if (visible) document.body.classList.add("no-scroll")
     if (!visible) document.body.classList.remove("no-scroll")
 
     return (
         <div
-            className={classnames(styles["pop-up"], {[styles["pop-up_visible"]]: visible}, {[className as string]: className})}>
-            <div className={styles["pop-up__bg"]}/>
-            <div className={styles["pop-up__inner"]}>
-                <FontAwesomeIcon icon="times" className={styles["pop-up__close-btn"]} onClick={() => onClose()}/>
-                <div className={styles["pop-up__text"]}>
+            className={classnames(pStyles["pop-up"], {[pStyles["pop-up_visible"]]: visible}, {[className as string]: className})}>
+            <div className={pStyles["pop-up__bg"]} onClick={onClose}/>
+            <div className={pStyles["pop-up__inner"]} style={{maxWidth: width}}>
+                <div className={pStyles["pop-up__header"]}>
+                    {title ? <p className={pStyles["pop-up__title"]}>{title}</p> : false}
+                    <FaTimes className={pStyles["pop-up__close-btn"]} onClick={onClose} size={"25px"}/>
+                </div>
+                <div className={pStyles["pop-up__text"]} style={styles}>
                     {children}
                 </div>
             </div>

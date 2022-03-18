@@ -8,7 +8,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="react-app" />
-    <orderEntry type="module" module-name="sn" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
+    <orderEntry type="module" module-name="vuejs" />
   </component>
 </module>

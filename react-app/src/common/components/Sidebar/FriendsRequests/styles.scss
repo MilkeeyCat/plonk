@@ -1,0 +1,54 @@
+@import "styles/colors";
+
+.friends-requests {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+
+    h3 {
+      color: $high-emphasis;
+      text-transform: uppercase;
+    }
+
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50px;
+      background-color: $theme-color;
+      color: $high-emphasis;
+    }
+  }
+
+  &__inner {
+    margin-top: 25px;
+  }
+
+  &__item {
+    background: $lighter;
+    padding: 20px;
+    border-radius: 20px;
+
+    &-header {
+      display: flex;
+    }
+
+    &-text {
+      max-width: 200px;
+      margin-left: 20px;
+    }
+
+    &-name {
+      font-weight: bold;
+    }
+
+    &-btns {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

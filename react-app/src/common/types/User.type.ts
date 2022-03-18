@@ -6,6 +6,6 @@ export type User<T = string> = {
     first_name: string | T
     last_name: string | T
     email: string | T
+    avatar: string | T
     gender: Genders | T
-    token: string | T
 }

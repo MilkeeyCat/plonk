@@ -1,5 +1,5 @@
-import {Input} from "../Input"
-import {FieldProps} from "formik"
+import {Input} from "../../../common/components/Input"
+import {FieldProps, FormikTouched} from "formik"
 import {RegisterFormFields} from "../../../common/types/RegisterFormFields.type"
 import {PasswordStrengthIndicator} from "./PasswordStrengthIndicator"
 import React from "react"
@@ -14,7 +14,7 @@ export const PasswordInput: React.FC<IProps & FieldProps<string, RegisterFormFie
     return (
         <div>
             <Input {...props}/>
-            <PasswordStrengthIndicator hidden={!(props.meta.touched && passwd)} password={passwd}/>
+            <PasswordStrengthIndicator hidden={!passwd} password={passwd}/>
         </div>
     )
 })

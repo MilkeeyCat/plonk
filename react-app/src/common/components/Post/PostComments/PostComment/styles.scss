@@ -1,0 +1,28 @@
+.comment {
+  padding: 20px;
+
+  display: flex;
+
+  & .avatar {
+    flex-shrink: 0;
+    margin-top: 10px;
+  }
+
+  &__right {
+    margin-left: 15px;
+  }
+
+  &__author {
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  &__pub-date {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
+  &__text {
+    margin-top: 5px;
+  }
+}

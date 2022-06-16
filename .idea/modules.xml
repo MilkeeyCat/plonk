@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/plonk.iml" filepath="$PROJECT_DIR$/.idea/plonk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../vuejs/.idea/vuejs.iml" filepath="$PROJECT_DIR$/../vuejs/.idea/vuejs.iml" />
     </modules>
   </component>
 </project>

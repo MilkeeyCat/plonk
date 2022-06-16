@@ -1,19 +1,21 @@
-import React, {useEffect, useState} from "react"
+import React, {CSSProperties, useEffect, useState} from "react"
 import WaveSurfer from "wavesurfer.js"
 import {FaPlay, FaPause} from "react-icons/fa"
 import "./styles.scss"
 
 interface IProps {
-    src: string | null
+    src: string | null,
+    id?: number,
+    styles?: CSSProperties
 }
 
-export const Waveform: React.FC<IProps> = React.memo(({src}) => {
+export const Waveform: React.FC<IProps> = React.memo(({src, id, styles}) => {
     const [waveform, setWaveform] = useState<any>(null)
     const [playing, setPlaying] = useState(false)
 
     useEffect(() => {
         setWaveform(WaveSurfer.create({
-            container: "#waveform",
+            container: `#waveform_${id}`,
             waveColor: "#ddd",
             progressColor: "#8569ff",
             cursorColor: "#fff",
@@ -28,7 +30,7 @@ export const Waveform: React.FC<IProps> = React.memo(({src}) => {
 
     useEffect(() => {
         if (waveform !== null) {
-            const track: any = document.querySelector("#track")
+            const track: any = document.querySelector(`#track_${id}`)
             waveform.load(track)
 
             waveform.on("pause", () => {
@@ -44,13 +46,13 @@ export const Waveform: React.FC<IProps> = React.memo(({src}) => {
     }
 
     return (
-        <div className="waveform">
+        <div className="waveform" style={styles}>
             <div className="waveform__play-btn" onClick={handlePlay}>
                 {!playing && <FaPlay size={"16px"}/>}
                 {playing && <FaPause size={"16px"}/>}
             </div>
-            <div id="waveform" className="waveform__inner"/>
-            <audio id="track" src={src ?? ""}/>
+            <div id={`waveform_${id}`} className="waveform__inner"></div>
+            <audio id={`track_${id}`} src={src ?? ""}/>
         </div>
     )
 })

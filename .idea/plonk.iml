@@ -8,12 +8,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
-    <orderEntry type="module" module-name="vuejs" />
   </component>
 </module>

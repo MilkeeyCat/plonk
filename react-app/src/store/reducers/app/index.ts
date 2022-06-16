@@ -1,7 +1,8 @@
 import {IAppAction, IAppState, AppActionEnum} from "./types"
 
 const initialState: IAppState = {
-    isInitialized: false
+    isInitialized: false,
+    // body: null
 }
 
 export const appReducer = (state: IAppState = initialState, action: IAppAction): IAppState => {

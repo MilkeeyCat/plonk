@@ -2,8 +2,8 @@ import {FieldProps, Form, Formik} from "formik"
 import styles from "../styles.module.scss"
 import classnames from "classnames"
 import {FormComponentWithTitle} from "../FormComponentWithTitle"
-import {Input} from "../Input"
-import {Select} from "../Select"
+import {Input} from "../../../common/components/Input"
+import {Select} from "../../../common/components/Select"
 import {Button} from "../../../common/components/Button"
 import {useDispatch, useSelector} from "react-redux"
 import {RegisterFormFields} from "../../../common/types/RegisterFormFields.type"
@@ -81,8 +81,8 @@ export const RegisterForm: React.FC<IProps> = React.memo(({visible, ...props}) =
                               }}
                               className={classnames(styles.form, styles["register-form"])}>
                             <div className={styles["login-form__column"]}>
-                                <FormComponentWithTitle name="first_name" title="First Name" Component={Input}/>
-                                <FormComponentWithTitle name="email" title="E-mail" Component={Input}/>
+                                <FormComponentWithTitle name="first_name" placeholder="Emanuel" title="First Name" Component={Input}/>
+                                <FormComponentWithTitle name="email" title="E-mail" placeholder="admin@example.com" Component={Input}/>
                                 <FormComponentWithTitle name="gender" title="Choose your gender" Component={
                                     (props: FieldProps<string, RegisterFormFields>) =>
                                         <Select {...props} defaultValue={props.form.values.gender}>
@@ -117,8 +117,8 @@ export const RegisterForm: React.FC<IProps> = React.memo(({visible, ...props}) =
                                 }/>
                             </div>
                             <div className={styles["register-form__column"]}>
-                                <FormComponentWithTitle name={"last_name"} title="Last Name" Component={Input}/>
-                                <FormComponentWithTitle name={"password"} title="Password" type="password"
+                                <FormComponentWithTitle name={"last_name"} title="Last Name" placeholder="Mangul" Component={Input}/>
+                                <FormComponentWithTitle name={"password"} title="Password" placeholder="root123" type="password"
                                                         Component={PasswordInput}/>
                                 <Button customStyles={{width: "100%", "marginTop": "auto"}}>Complete</Button>
                             </div>

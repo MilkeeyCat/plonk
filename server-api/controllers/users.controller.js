@@ -1,6 +1,5 @@
 import bcrypt from "bcryptjs"
 import UsersService from "../services/users.service.js"
-import {User} from "../models/User.js"
 
 class UsersController {
     async register(req, res) {
@@ -8,8 +7,8 @@ class UsersController {
             const {first_name, last_name, email, password, gender} = req.body
             const errors = {}
 
-            const oldUser = await User.findOne({email})
-            console.log(oldUser, ":DD:D:")
+            const oldUser = await UsersService.findUser({email}) //
+            // console.log(oldUser, ":DD:D:")
 
             if (oldUser) {
                 errors.email = "User Already Exist. Please Login"
@@ -38,6 +37,7 @@ class UsersController {
 
     async login(req, res) {
         try {
+            // console.log(await process.postgresql.query("DELETE FROM posts WHERE id = 35;"))
             const {email, password} = req.body
             const errors = {}
 
@@ -65,7 +65,7 @@ class UsersController {
 
     async getUserData(req, res) {
         try {
-            const user = await User.findOne({email: req.user.email, id: req.user.id})
+            const user = await UsersService.findUser({email: req.user.email, id: req.user.id})
 
             return res.json({user})
         } catch (e) {

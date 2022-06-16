@@ -7,7 +7,7 @@ import {Search} from "../Search"
 import {NavBar} from "../NavBar"
 import {Notification} from "../Notification"
 import {Avatar} from "../Avatar"
-import logo from "../../../images/logo.svg"
+import logo from "../../../images/logo1.svg"
 
 export const Header = () => {
     const currentButton = useSelector((state: RootState) => state.headerReducer.form)

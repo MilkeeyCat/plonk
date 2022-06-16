@@ -1,3 +1,1 @@
-import {Model} from "../db/db.js"
-
-export const Post = new Model("posts")
+// idk for what this file is here. let it just be.

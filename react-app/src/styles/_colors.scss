@@ -1,7 +1,14 @@
 $background-color: #1a1825;
 $lighter: #2F2B42;
+$lighter-than-lighter: #443E62;
 $theme-color: #8569ff;
-$high-emphasis: #ddd;
-$medium-emphasis: #9d9d9d;
-$disabled: #616161;
+$high-emphasis: rgba(255, 255, 255, .87);
+//$high-emphasis: #ddd;
+$medium-emphasis: rgba(255, 255, 255, .6);
+//$medium-emphasis: #9d9d9d;
+$medium-emphasis: rgba(255, 255, 255, .38);
+//$disabled: #616161;
 $tertiary: #443E62;
+
+$contextmenu: #554e7a;
+$contextmenu-hover: #675e96;

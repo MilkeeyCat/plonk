@@ -13,13 +13,11 @@ export const Plonk = () => {
         dispatch(initialize)
     }, [])
 
-    if(!isInitialized) return <>Loading</>
-
     return (
         <div className="container">
             <Header/>
             <AppRouter/>
+            {/* ive no footer lol */}
         </div>
     )
 }
-

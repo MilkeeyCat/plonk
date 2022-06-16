@@ -1,0 +1,55 @@
+@import "styles/colors";
+
+.input-container {
+  position: relative;
+}
+
+.input {
+  background: $lighter;
+  height: 40px;
+  border-radius: 10px;
+  transition: all 0.30s ease-in-out;
+  color: $high-emphasis;
+  width: 100%;
+  text-indent: 15px;
+  margin-top: 10px;
+
+  &__error {
+    border: 1px solid #FF3131;
+    box-shadow: 0 0 5px #FF3131;
+  }
+}
+
+.error-msg {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  animation: move .4s linear infinite alternate;
+  //animation-delay: 3s;
+
+  &__hidden {
+    display: none;
+  }
+}
+
+//@keyframes move {
+//  0% {
+//    top: 48%;
+//  }
+//
+//  100% {
+//    top: 52%;
+//  }
+//}
+
+@keyframes move {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1.1);
+  }
+}

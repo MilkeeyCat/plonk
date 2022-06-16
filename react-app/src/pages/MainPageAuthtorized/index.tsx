@@ -6,24 +6,26 @@ import {AiOutlineFileText, AiOutlinePicture, AiOutlineSmile} from "react-icons/a
 import {BsFillStopFill} from "react-icons/bs"
 import {MdKeyboardVoice} from "react-icons/md"
 import {PopUp} from "../../common/components/PopUp"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {Button} from "../../common/components/Button"
 import classnames from "classnames"
 import {useReactMediaRecorder} from "react-media-recorder"
 import {Waveform} from "./Waveform"
 import {Field, Form, Formik} from "formik"
 import {DragAndDrop} from "../../common/components/DragAndDrop"
-import {SendPost} from "../../store/thunk/post"
+import {ReceiveAndSetPosts, SendPost} from "../../store/thunk/post"
 import {FaTrashAlt} from "react-icons/fa"
+import {Posts} from "../../common/components/Posts"
 
 export const MainPageAuthtorized: React.FC = () => {
     const dispatch = useDispatch()
 
     const user = useSelector((state: RootState) => state.userReducer.user)
+    const posts = useSelector((state: RootState) => state.postsReducer.posts)
     const [isPopUpVisible, setIsPopUpVisible] = useState(false)
     const [isTextAreaVisible, setIsTextAreaVisible] = useState(true)
     const [isVoiceRecorderVisible, setIsVoiceRecorderVisible] = useState(false)
-    const [voiceMessageBlob, setVoiceMessageBlob] = useState<Blob | null>(null)
+    const [voiceMessageBlob, setVoiceMessageBlob] = useState<Blob | "">("")
     const [isImageVideoVisible, setIsImageVideoVisible] = useState(false)
     const [isFileVisible, setIsFileVisible] = useState(false)
 
@@ -40,6 +42,11 @@ export const MainPageAuthtorized: React.FC = () => {
             }
         }
     )
+
+    useEffect(() => {
+        //load posts here. you know
+        dispatch(ReceiveAndSetPosts())
+    }, [])
 
     return (
         <>
@@ -82,15 +89,20 @@ export const MainPageAuthtorized: React.FC = () => {
                     file: "",
                     voice: ""
                 } as { text: string, imageVideo: string | File, file: string | File, voice: string }}
-                        onSubmit={(values) => {
+                        onSubmit={(values, {resetForm}) => {
                             dispatch(SendPost({
                                 text: values.text,
                                 imageVideo: values.imageVideo,
                                 voice: voiceMessageBlob,
                                 file: values.file
+                            }, () => {
+                                resetForm()
+                                setIsPopUpVisible(false)
                             }))
                         }}>
                     {({values, setFieldValue}) => {
+
+                        if (values.imageVideo) console.log(values.imageVideo)
 
                         if (status === "stopped" && values.voice === "" && mediaBlobUrl !== null) setFieldValue("voice", mediaBlobUrl)
 
@@ -112,13 +124,14 @@ export const MainPageAuthtorized: React.FC = () => {
                                         <MdKeyboardVoice size={"20px"}/>}
                                     </button>
                                     }
-                                    {status === "stopped" && mediaBlobUrl ? <Waveform src={mediaBlobUrl}/> : false}
+                                    {status === "stopped" && mediaBlobUrl ?
+                                        <Waveform src={mediaBlobUrl} id={0}/> : false}
                                     {status === "stopped" && mediaBlobUrl && console.log(voiceMessageBlob)}
                                     {values.voice !== "" &&
                                     <button type="button" onClick={() => {
                                         clearBlobUrl()
                                         setFieldValue("voice", "")
-                                        setVoiceMessageBlob(null)
+                                        setVoiceMessageBlob("")
                                     }} className="new-post__voice-recorder-btn new-post__voice-recorder-delete">
                                         <FaTrashAlt/></button>
                                     }
@@ -173,6 +186,7 @@ export const MainPageAuthtorized: React.FC = () => {
                     }}
                 </Formik>
             </PopUp>
+            <Posts posts={posts}/>
         </>
     )
 }

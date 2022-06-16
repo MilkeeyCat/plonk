@@ -2,7 +2,7 @@ import {Form, Formik} from "formik"
 import styles from "../styles.module.scss"
 import classnames from "classnames"
 import {FormComponentWithTitle} from "../FormComponentWithTitle"
-import {Input} from "../Input"
+import {Input} from "../../../common/components/Input"
 import {Button} from "../../../common/components/Button"
 import React, {useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
@@ -48,15 +48,13 @@ export const LoginForm: React.FC<IProps> = ({visible, ...props}) => {
                 }}>
             {() => {
                 return (
-                    <Form {...props} ref={newRef => setForm(newRef)} onAnimationEnd={(e) => {
-
-                    }}
+                    <Form {...props} ref={newRef => setForm(newRef)} onAnimationEnd={(e) => {}}
                           className={classnames(styles.form, styles["login-form"])}>
                         <div className={styles["login-form__column"]}>
-                            <FormComponentWithTitle name="email" title="Email or Username" Component={Input}/>
+                            <FormComponentWithTitle name="email" title="Email or Username" placeholder="admin@example.com" Component={Input}/>
                         </div>
                         <div className={styles["login-form__column"]}>
-                            <FormComponentWithTitle name="password" title="Password" Component={Input}/>
+                            <FormComponentWithTitle name="password" title="Password" placeholder="root123" Component={Input}/>
                         </div>
                         <Button className={styles["login-form__submit-btn"]}>Complete</Button>
                     </Form>
